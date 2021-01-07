@@ -484,16 +484,16 @@ class Client {
     getGatewayConfig(customerId) {
         return post(this._client, `/payments/${customerId}/gatewayconfig`, { test: 'dummy' })
     }
-    getProduct(id,extCustomerId) {
+    getProduct(id, extCustomerId) {
         return get(this._client, `/customers/${extCustomerId}/products/${id}`)
     }
-    getProductShowcase(queryStringParameters,extCustomerId) {
+    getProductShowcase(queryStringParameters, extCustomerId) {
         const additionalParametrs = {
             queryParams: queryStringParameters
         }
         return get(this._client, `/customers/${extCustomerId}/productshowcase`, additionalParametrs)
     }
-    getProducts(queryStringParameters,extCustomerId) {
+    getProducts(queryStringParameters, extCustomerId) {
         const additionalParametrs = {
             queryParams: queryStringParameters
         }
@@ -586,16 +586,16 @@ class Client {
     verifyBankDetails(data) {
         return post(this._client, `/verification/cstmrbankdetails`, data)
     }
-    createEmandateLink(data,extCustomerId) {
+    createEmandateLink(data, extCustomerId) {
         return post(this._client, `/customers/${extCustomerId}/emandate/createlink`, data)
     }
-    cancelEmandateLink(id,extCustomerId) {
+    cancelEmandateLink(id, extCustomerId) {
         return _delete(this._client, `/customers/${extCustomerId}/emandate/${id}`)
     }
-    getEmandateLink(id,extCustomerId) {
+    getEmandateLink(id, extCustomerId) {
         return get(this._client, `/customers/${extCustomerId}/emandate/${id}`)
     }
-    resendEmandateLink(id,extCustomerId) {
+    resendEmandateLink(id, extCustomerId) {
         return post(this._client, `/customers/${extCustomerId}/emandate/${id}/notify`)
     }
     // emergency sell
@@ -614,7 +614,7 @@ class Client {
         return get(this._client, `/customers/${extCustomerId}/emergencysellorders`, additionalParametrs)
     }
 
-    
+
 
     // jewellery sell
     jewelleryCreate(extCustomerId, order) {
@@ -625,6 +625,7 @@ class Client {
         return get(this._client, `/customers/${extCustomerId}/jewelleryorders/${orderid}`)
 
     }
+
     jewelleryList(extCustomerId, queryParams) {
         const additionalParametrs = {
             queryParams: queryParams
@@ -635,18 +636,47 @@ class Client {
         return post(this._client, `/customers/${customerId}/goldtojewellery`, data)
 
     }
-    applyLein(data){
+    jewelleryPurityCertificate(extCustomerId, id) {
+        return get(this._client, `/puritycertificate/${id}`)
+
+    }
+    applyLein(data) {
         return post(this._client, `/liens`, data)
 
     }
-    getLein(id){
+    getLein(id) {
         return get(this._client, `/liens/${id}`,)
     }
-    addServiceChargePaymentDetail(id,data){
+    addServiceChargePaymentDetail(id, data) {
         return post(this._client, `/liens/${id}/addservicechargepayment`, data)
 
     }
+    shippment_list(extCustomerId, queryParams) {
+        const additionalParametrs = {
+            queryParams: queryParams
+        }
 
+        return get(this._client, `/customers/${extCustomerId}/shipments`, additionalParametrs)
+    }
+    shippment_get(extCustomerId, id) {
+        return get(this._client, `/customers/${extCustomerId}/shipments/${id}`)
+    }
+    listCoinOrder(extCustomerId, queryParams) {
+        const additionalParametrs = {
+            queryParams: queryParams
+        }
+        return get(this._client, `/customers/${extCustomerId}/coinorders`, additionalParametrs)
+    }
+    getCoinOrder(extCustomerId, orderId) {
+        return get(this._client, `/customers/${extCustomerId}/coinorders/${orderId}`)
+    }
+
+    getLtvRate(extBranchId, queryParams) {
+        const additionalParametrs = {
+            queryParams: queryParams
+        }
+        return get(this._client, `/benchmarkrate`, additionalParametrs)
+    }
 
 }
 

@@ -8,10 +8,10 @@ const path = require('path');
 const request = require('request');
 const fs = require('fs');
 
-const extCustomerId = 'AAA111CST001';
+const extCustomerId = 'ffa9da6a8375dca831fb3be97291763c';
 const uploadfilePath = 'tests/res/customer.png';
 const fileMetadata = {
-    type:'CUSTOMER_DOC',
+    type:'CUSTOMER_LIEN_DOC',
     filename:path.basename(uploadfilePath)
 }
 

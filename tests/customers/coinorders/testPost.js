@@ -17,8 +17,8 @@ const order = {
   // "orderTotalValueInr": 10,
   "jewelleryItems": [
     {
-      "jewelleryId": "e0066110-dd2e-11ea-88f6-8bd81abcab40",
-      "quantity": 2,
+      "coinId": "e0066110-dd2e-11ea-88f6-8bd81abcab40",
+      "quantity": 1,
       "bullionRateId": "string",
       // "totalPriceInr": 0,
       // "chargesAmountInr": 0,
@@ -74,14 +74,18 @@ const order = {
 
 
 };
+const filterProducts = {
+  category: 'coin',
+
+}
 
 async function test() {
   let client = await DvaraGold.Client(config);
-  let jewellery = await client.getProducts({}, extCustomerId);
-  order.jewelleryItems[0].jewelleryId = jewellery[0].id;
+  let jewellery = await client.getProducts(filterProducts, extCustomerId);
+  order.jewelleryItems[0].coinId = jewellery[0].id;
   order.jewelleryItems[0].bullionRateId = jewellery[0].bullionRateId;
   order.paymentPlan.useBullionBalance[0].maxBullionWtGm = jewellery[0].weightInGm;
-  return await client.jewelleryCreate(extCustomerId, order);
+  return await client.createCoinOrder(extCustomerId, order);
 
 }
 test()
