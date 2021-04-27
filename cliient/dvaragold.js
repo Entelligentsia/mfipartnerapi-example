@@ -266,6 +266,12 @@ class Client {
     getCustomerInvoiceUrl(customerId, orderid) {
         return get(this._client, `/customers/${customerId}/orderinvoice/${orderid}`)
     }
+    getPartnerEodReport(date) {
+        return get(this._client, `/eodreport/${date}`)
+    }
+    getSsoUrl(data) {
+        return post(this._client, `/auth/sso_url`,data)
+    }
     createEtfBuyOrder(customerId, order) {
         return post(this._client, `/customers/${customerId}/etforders/buy`, order)
     }
